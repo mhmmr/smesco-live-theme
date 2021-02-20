@@ -1,4 +1,4 @@
-const { resolve } = require('path')
+import { resolve } from "path"
 
 module.exports = {
   build: {
@@ -8,5 +8,5 @@ module.exports = {
         blog: resolve(__dirname, 'blog/index.html')
       }
     }
-  }
+  },
 }
