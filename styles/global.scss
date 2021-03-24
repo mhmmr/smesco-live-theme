@@ -2,23 +2,166 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --liveVideoHeight: 500px;
+  --liveVideoTop: calc(-573px / 2);
+}
+
 @layer base {
-  @import url('https://rsms.me/inter/inter.css');
-  
+  @import url("https://rsms.me/inter/inter.css");
+
   html {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
   @supports (font-variation-settings: normal) {
-    html { font-family: 'Inter var', sans-serif; }
+    html {
+      font-family: "Inter var", sans-serif;
+    }
+  }
+
+  body {
+    background: #fdf3f3;
   }
 }
 
 @layer components {
+  .container {
+    @apply max-w-screen-lg;
+  }
   .navigation {
-    @apply bg-gray-900 text-white;
-    height: 54px;
     .nav-flex {
-      height: 54px;
+      height: 84px;
     }
+    svg {
+      height: 30px;
+    }
+  }
+
+  .banner {
+    height: 300px;
+    @media (min-width: 640px) {
+      height: 540px;
+    }
+    .illustration {
+      z-index: 1;
+    }
+  }
+
+  .live-video-wrapper {
+    // margin-top: -150px;
+    // @media (min-width: 640px) {
+    //   margin-top: var(--liveVideoTop);
+    // }
+    &:after {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 20%;
+      bottom: 0;
+      background: url(https://live.smesco.go.id/wp-content/uploads/2021/03/Vector-2.png);
+      content: " ";
+      background-size: contain;
+      background-repeat: no-repeat;
+      z-index: 1;
+    }
+    .live-video {
+      &:hover {
+        img {
+          transform: scale(1.03);
+        }
+      }
+      img {
+        transform: scale(1);
+        z-index: -1;
+      }
+    }
+  }
+
+  .product-item {
+    @apply cursor-pointer;
+    &:hover {
+      img {
+        transform: scale(1.06);
+      }
+    }
+    img {
+      transform: scale(1);
+      z-index: -1;
+    }
+  }
+
+  .categories {
+    .category-item {
+      height: 100px;
+      &:hover {
+        img {
+          transform: scale(1.06);
+        }
+      }
+      img {
+        transform: scale(1);
+      }
+      &:after {
+        position: absolute;
+        content: " ";
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0,0,0,.5);
+      }
+    }
+  }
+
+  .page-footer {
+    background-image: linear-gradient(10deg, #f58229, #f99d3e 80%);
+    line-height: 1.8;
+    h6 {
+      @apply text-xl font-bold  mt-4;
+      & + div {
+        @apply mt-4;
+      }
+    }
+  }
+
+  .page-footer .form-control {
+    font-size: 0.8rem;
+  }
+
+  @media (min-width: 768px) {
+    .page-footer .form-control {
+      font-size: 0.7rem;
+    }
+  }
+
+  .page-footer .contact-icon {
+    margin-top: 0.3em;
+  }
+
+  .page-footer .contact-icon {
+    fill: #fff;
+    stroke: #f99d3e;
+  }
+
+  .page-footer .social-icon {
+    height: 1.75rem;
+    color: #fff;
+  }
+
+  .page-footer .social-icon:hover {
+    color: hsla(0, 0%, 100%, 0.7);
+  }
+  .contact-icon {
+    width: 1rem;
+    height: 1rem;
+    flex: 0 0 1rem;
+  }
+  .bg-primary {
+    background-color: #f58229;
+  }
+  .border-secondary {
+    border-color: #f99d3e;
   }
 }
